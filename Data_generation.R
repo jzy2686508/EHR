@@ -31,4 +31,6 @@ p10 = 0.01
 Y_obs = Misclassification(p11=p11,p10=p10,Y=Y)
 
 DT = data.frame(X,Treat,Y_obs,Y,Select_index)
+DT = split(DT,f=1:Rep)
 para = list(Rep=Rep,Pop=Pop,beta=beta,beta2=beta2,betaT=betaT,s1=s1,s0=s0,p11=p11,p10=p10)
+
