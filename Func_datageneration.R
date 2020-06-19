@@ -23,10 +23,17 @@ compute_tau = function(beta, beta1, betaT){
 
 # selection 
 Selection = function(s1,s0, Y, Treat){
-  temp = runif(n=size(Y))
-  selection_index = vector(length=size(Y))
-  selection_index[Treat] = temp[Treat] < s1
-  selection_index[!Treat] = temp[!Treat] < s0
+  temp = runif(n=length(Y))
+  selection_index = vector(length=length(Y))
+  selection_index[Y] = temp[Y] < s1
+  selection_index[!Y] = temp[!Y] < s0
   return(selection_index)
 }
 
+Misclassification = function(p11,p10,Y){
+  temp = runif(n=length(Y))
+  Y_obs = vector(length=length(Y))
+  Y_obs[Y] = temp[Y] < p11
+  Y_obs[!Y] = temp[!Y] < p10
+  return(Y_obs)
+}

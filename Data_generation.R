@@ -20,8 +20,15 @@ Y = (runif(n=Rep*Pop, min=0, max=1)<P_positive_true)
 # compute montecarlo treatment effect
 tau_montecarlo = mean(Y[Treat] / Prop_true[Treat]) - mean(Y[!Treat] / Prop_true[!Treat])
 
-# selection probability
+# selection probability s1: P(selecion into database Given Y=1) s0: P(selection into databse given Y=0)
 s1 = 0.9
 s0 = 0.7
-Select_index = Selection()
+Select_index = Selection(s1=s1,s0=s0, Y=Y, Treat=Treat)
 
+# misclassification p11-sensitivity, p10 = 1-specificity
+p11 = 0.9
+p10 = 0.01
+Y_obs = Misclassification(p11=p11,p10=p10,Y=Y)
+
+DT = data.frame(X,Treat,Y_obs,Y,Select_index)
+para = list(Rep=Rep,Pop=Pop,beta=beta,beta2=beta2,betaT=betaT,s1=s1,s0=s0,p11=p11,p10=p10)
