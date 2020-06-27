@@ -18,7 +18,7 @@ Mis_selection_est = function(DT_onecopy,para){
   Weighted_y[!sDT$Treat] = sDT$Y_obs[!sDT$Treat] / (1 - Prop_predicted[!sDT$Treat])
   
   # break into group and compute expectation.
-  breaknum_Age = 1
+  breaknum_Age = 20
   breaknum_Sex = length(table(sDT$Gender))
   breaknum_Race = length(table(sDT$Race))
   Group_dict_s = array(dim=c(breaknum_Age,breaknum_Sex,breaknum_Race))
