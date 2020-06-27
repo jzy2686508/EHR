@@ -1,4 +1,4 @@
-source("Data_generation.R")
+# source("Data_generation.R")
 
 # Naive estimation(IPW)
 
@@ -10,9 +10,9 @@ Naiveest = function(DT_onecopy){
   Prop_predicted = Model.prop$fitted.values
   Weighted_y1 = sDT$Y_obs[sDT$Treat] / Prop_predicted[sDT$Treat]
   Weighted_y0 = sDT$Y_obs[!sDT$Treat] / (1 - Prop_predicted[!sDT$Treat])
-  tau = mean(Weighted_y1) - mean(Weighted_y0)
+  tau = (sum(Weighted_y1) - sum(Weighted_y0))/nrow(sDT)
   return(tau)
 }
 
 
-Results.naive=sapply(DT,FUN=Naiveest)
+# Results.naive=sapply(DT,FUN=Naiveest)
