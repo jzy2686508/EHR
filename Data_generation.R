@@ -4,10 +4,10 @@ Rep = 500
 Pop = 10000
 num_cov = 3
 # set true treatment assignment mechanism(intercept, X[,1],X[,2],X[,3])
-beta = c(-1,0.01,0.2,0.1)
+beta = c(-1,0.0,0.2,0.1)
 # set true outcome parameters(intercept, X[,1], X[,2], X[,3])
-beta2 = c(-1,0.01,0.1,0.05)
-betaT = 0.2
+beta2 = c(-1,0.0,0.1,0.05)
+betaT = 0.5
 
 # Original X
 X = Generate_covariates(Rep=Rep, Pop=Pop, num_cov=num_cov) # age in 0:80, 2 kind of sex, 5 kind of races.
