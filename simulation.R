@@ -18,8 +18,13 @@ Results.misclass_select.para = unlist(mclapply(DT,FUN=Mis_selection_est_parametr
 
 
 library(ggplot2)
-result = data.frame(naive=Results.naive,mis=Results.misclass,mis_sel_DR=Results.misclass_select.doublerobust
-                    ,mis_sel_IPW = Results.misclass_select.ipw,mis_sel_PARA = Results.misclass_select.para)
+
+pdf("Graph/2021-2-25-1.pdf")
+
+result = data.frame(naive=Results.naive,mis=Results.misclass,DR=Results.misclass_select.doublerobust
+                    ,IPW = Results.misclass_select.ipw,PARA = Results.misclass_select.para)
 boxplot(result)
 epirical_mean = sapply(result,mean)
 abline(h=tau_montecarlo, col='red')
+
+dev.off()
